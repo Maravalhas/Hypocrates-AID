@@ -1,0 +1,13 @@
+#loginContainer{
+    background-image: url(../img/statue.png);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 5px 5px grey;
+
+    display: flex;
+    justify-content:center;
+    align-items: flex-end;
+
+    width: 450px;
+    height: 650px;
+}
