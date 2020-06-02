@@ -10,16 +10,22 @@
     <script src="../js/controller/signup.js"></script>
 </head>
 
-<div class="container" id="signupContainer">
-    <form>
-                <input type="text" id="signupUsername" class="form-control" placeholder="Username" required>
-                <input type="password" id="signupPassword" class="form-control" placeholder="Password" required>
-                <input type="password" id="signupConfirmPassword" class="form-control" placeholder="Password" required>
-                <button class="btn btn-primary">Submit</button>
-    </form>
-</div>
-
 <body>
-    
+
+    <ul class="nav" id="navbar">
+        <img src="../img/logo.png" id="logo">
+    </ul>
+
+    <div class="container" id="signupContainer">
+        <form>
+                    <input type="text" id="signupUsername" class="form-control" placeholder="Username" required>
+                    <input type="password" id="signupPassword" class="form-control" placeholder="Password" required>
+                    <input type="password" id="signupConfirmPassword" class="form-control" placeholder="Confirm Password" required>
+                    <div id="buttonPlaceHolder">
+                        <button class="btn btn-primary" id="loginSubmit">Submit</button>
+                    </div>
+        </form>
+    </div>    
+
 </body>
 </html>

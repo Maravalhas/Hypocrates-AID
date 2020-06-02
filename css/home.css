@@ -1,0 +1,17 @@
+body{
+    background-image: url(../img/gradient.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#navbar{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-end;
+}
+
+#logo{
+
+    height:65px;
+}

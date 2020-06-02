@@ -1,4 +1,15 @@
+#navbar{
+
+    margin:10px;
+}
+
+#logo{
+
+    height: 70px;
+}
+
 #loginContainer{
+
     background-image: url(../img/statue.png);
     background-position: center;
     background-size: cover;
@@ -10,4 +21,31 @@
 
     width: 450px;
     height: 650px;
+    margin-top: 50px;
 }
+
+#loginUsername{
+
+    margin-bottom: 7%;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#loginPassword{
+
+    margin-bottom: 30%;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#buttonPlaceHolder{
+
+    margin-bottom: 10%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+

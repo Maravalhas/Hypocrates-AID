@@ -10,15 +10,21 @@
     <script src="../js/controller/login.js"></script>
 </head>
 
+<body>
+
+<ul class="nav" id="navbar">
+    <img src="../img/logo.png" id="logo">
+</ul>
+    
 <div class="container" id="loginContainer">
     <form>
                 <input type="text" id="loginUsername" class="form-control" placeholder="Username" required>
                 <input type="password" id="loginPassword" class="form-control" placeholder="Password" required>
-                <button class="btn btn-primary">Submit</button>
+                <div id="buttonPlaceHolder">
+                    <button class="btn btn-primary" id="loginSubmit">Submit</button>
+                </div>
     </form>
 </div>
 
-<body>
-    
 </body>
 </html>
