@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="icon" href="../img/smallLogoWhite.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/login.css">
     <script src="../js/controller/login.js"></script>
@@ -13,24 +14,19 @@
 <body>
 
 <ul class="nav" id="navbar">
-    <img src="../img/logo.png" id="logo">
+    <img src="../img/smalllogoWhite.png" id="logo" onclick="location.href='home.html'">
+
+    <div class="box" id="forgotPassword"> <a href="signup.html"> SignUp </a></div>
 </ul>
     
 <div class="container" id="loginContainer">
     <form>
                 <input type="text" id="loginUsername" class="form-control" placeholder="Username" required>
                 <input type="password" id="loginPassword" class="form-control" placeholder="Password" required>
+
                 <div id="buttonPlaceHolder">
-                    <button class="btn btn-primary" id="loginSubmit">Submit</button>
+                    <button class="btn btn-light" id="loginSubmit"> Submit </button>
                 </div>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                  </label>
-                  <div class="container" style="background-color:#f1f1f1">
-                    <button type="button" class="cancelbtn">Cancel</button>
-                    <span class="psw">Forgot <a href="#">password?</a></span>
-                  </div>
-               
     </form>
 </div>
 

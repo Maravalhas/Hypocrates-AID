@@ -1,17 +1,62 @@
 body{
-    background-image: url(../img/gradient.png);
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    background-image: white;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
+
+#homeContainer{
+
+    margin-top: 20%;
+    width:100%;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+
 #navbar{
-    margin: 10px;
+    
     display: flex;
     flex-direction: row;
-    align-content: flex-end;
+    align-content: center;
+    background-color: black;
+    height: 80px;
+    padding: 15px;
 }
 
 #logo{
 
-    height:65px;
+    align-self: center;
+    margin-left: 25px;
+    height:50px;
+}
+
+.box{
+
+    padding:15px;
+    margin-left: 25px;
+    border-bottom: 5px solid transparent;
+    color: white;
+    align-self: center;
+    transition-duration: 0.5s;
+}
+
+.box:hover{
+    border-bottom: 5px solid red;
+}
+
+.box a{
+
+    text-decoration: none;
+    color: white;
+}
+
+#bigLogoBlack{
+
+    align-content: center;
+    justify-content: center;
 }

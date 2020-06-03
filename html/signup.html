@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignUp</title>
+    <link rel="icon" href="../img/smallLogoWhite.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/signup.css">
     <script src="../js/controller/signup.js"></script>
@@ -13,7 +14,9 @@
 <body>
 
     <ul class="nav" id="navbar">
-        <img src="../img/logo.png" id="logo">
+        <img src="../img/smalllogoWhite.png" id="logo" onclick="location.href='home.html'">
+    
+        <div class="box" id="signedup"><a href="login.html">Already SignedUp?</a></div>
     </ul>
 
     <div class="container" id="signupContainer">
@@ -22,14 +25,9 @@
                     <input type="password" id="signupPassword" class="form-control" placeholder="Password" required>
                     <input type="password" id="signupConfirmPassword" class="form-control" placeholder="Confirm Password" required>
                     <div id="buttonPlaceHolder">
-                        <button class="btn btn-primary" id="loginSubmit">Submit</button>
+                        <button class="btn btn-light" id="loginSubmit">Submit</button>
                     </div>
-                    <label>
-                        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                      </label>
-                      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-                                        
-        </form>
+        </form>                             
     </div>    
 
 </body>
