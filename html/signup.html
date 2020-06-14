@@ -8,7 +8,6 @@
     <link rel="icon" href="../img/smallLogoWhite.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/signup.css">
-    <script src="../js/controller/signup.js"></script>
 </head>
 
 <body>
@@ -20,15 +19,18 @@
     </ul>
 
     <div class="container" id="signupContainer">
-        <form>
+        <form id="signupForm">
                     <input type="text" id="signupUsername" class="form-control" placeholder="Username" required>
                     <input type="password" id="signupPassword" class="form-control" placeholder="Password" required>
                     <input type="password" id="signupConfirmPassword" class="form-control" placeholder="Confirm Password" required>
+
                     <div id="buttonPlaceHolder">
-                        <button class="btn btn-light" id="loginSubmit">Submit</button>
+                        <input type="submit" class="btn btn-light">
                     </div>
         </form>                             
     </div>    
 
+
+       <script type="module" src="../js/view/signup.js"></script>
 </body>
 </html>
