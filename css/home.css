@@ -19,11 +19,13 @@ h2{
 
 #navbar{
     
+    position: fixed;
     display: flex;
     flex-direction: row;
     align-content: center;
     background-color: black;
     height: 80px;
+    width: 100%;
     padding: 15px;
 }
 
@@ -67,7 +69,7 @@ h2{
 #mainLogo{
 
     margin-top: 35%;
-    margin-bottom: 2%;
+    margin-bottom: 5%;
     max-width: 450px;
     align-self: center;
     justify-self: center;

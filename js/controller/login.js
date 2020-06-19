@@ -7,19 +7,33 @@ export default class LoginController {
         this.users = new Users()
     }
 
+    //Validate form credentials for an already existing user
+
     validateLogin(loginUsername,loginPassword) {
 
         if(this.users.getAllUsers().some(user => user.username == loginUsername && user.password == loginPassword)){
 
             this.users.loginUser(loginUsername)
+            alert('Loged in Successfully')
+            window.location.replace('../html/home.html');
+        }
+        else
+        {
+            alert('Incorrect Credentials')
+            window.location.replace('../html/login.html');
         }
     }
+
+    //Validate if there's no user with the choosed username.
+    //If so, proceed to model for user registration in local storage
 
     validateSignup(createUsername,createPassword) {
 
         if(!this.users.getAllUsers().some(user => user.username == createUsername)){
 
             this.users.signupUser(createUsername,createPassword)
+            alert('Loged in Successfully')
+            window.location.replace('../html/home.html');
         }
 
         else{

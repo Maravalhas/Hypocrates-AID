@@ -12,9 +12,8 @@ export default class Users {
 
     loginUser(username)
     {   
-        let activeUser = username
-        alert(`Loged in as ${activeUser}`)
-        window.location.replace('../html/home.html');
+
+        let activeUser = username 
     }
 
     signupUser(username,password){

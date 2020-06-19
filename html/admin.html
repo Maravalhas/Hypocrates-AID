@@ -11,8 +11,35 @@
 </head>
 
 <body>
-    
+    <ul class="nav" id="navbar">
+        <img src="../img/smallLogoWhite.png" id="logo">
 
-       <script type="module" src="../js/view/admin.js"></script>
+        <div class="box" id="aboutus"> <a href="../html/home.html"> About Us </a></div>
+
+        <div class="box" id="loginButton" hidden> <a href="login.html"> Login </a></div>
+
+        <div class="box" id="scheduling" > <a href="scheduling.html"> Scheduling </a></div>
+
+        <div class="box" id="profile" > Profile </div>
+
+        <div class="box" id="leaderboard"> LeaderBoard </div>
+    </ul>
+
+    <div class="container" id="adminContainer">
+
+        <form id="addDoctorForm">
+            <input type="text" id="createDoctorName" class="form-control" placeholder="Name" required>
+            <input type="text" id="createDoctorAge" class="form-control" placeholder="Age" required>
+            <input type="text" id="createDoctorExpertise" class="form-control" placeholder="Expertise" required>
+            <input type="text" id="createDoctorLocation" class="form-control" placeholder="Location" required>
+
+            <div id="buttonPlaceHolder">
+                <button class="btn btn-light" id="doctorCreationSubmit"> Submit </button>
+            </div>
+        </form>
+
+    </div>
+    
+    <script type="module" src="../js/view/admin.js"></script>
 </body>
 </html>

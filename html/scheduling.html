@@ -8,10 +8,33 @@
     <link rel="icon" href="../img/smallLogoWhite.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/scheduling.css">
-    <script src="../js/controller/scheduling.js"></script>
 </head>
 
 <body>
+    
+    <ul class="nav" id="navbar">
+        <img src="../img/smallLogoWhite.png" id="logo">
+
+        <div class="box" id="aboutus"> <a href="../html/home.html"> About Us </a> </div>
+
+        <div class="box" id="loginButton" hidden> <a href="login.html"> Login </a></div>
+
+        <div class="box" id="profile" > Profile </div>
+
+        <div class="box" id="leaderboard"> LeaderBoard </div>
+
+        <div class="box" id="admin"> <a href="admin.html"> Admin </a></div>
+        
+    </ul>
+
+    
+
+    <div class="container" id="schedulingContainer">
+        <div id="map"></div>
+    </div>
+
+    <script type="module" src="../js/view/scheduling.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9v6CJD68R4XtEs5Ue8Q3kWa9nMdxohVA"></script>
     
 </body>
 </html>

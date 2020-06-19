@@ -14,6 +14,8 @@ export default class LoginView {
         this.bindLoginForm()
     }
 
+    //Prevent form validation and get both username and password indicated
+
     bindLoginForm() {
 
         this.loginForm.addEventListener('submit', event => {
@@ -21,6 +23,7 @@ export default class LoginView {
             event.preventDefault();
             
             this.loginController.validateLogin(this.loginUsername.value , this.loginPassword.value)
+
         })
     }
 }

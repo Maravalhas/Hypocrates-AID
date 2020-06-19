@@ -13,6 +13,9 @@ export default class SignupView {
         this.bindSignupForm()
     }
 
+    //Prevent form submition
+    //Confirm if passwords match / Throw an error if they don't
+
     bindSignupForm() {
 
         this.signupForm.addEventListener('submit', event => {
