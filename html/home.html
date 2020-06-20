@@ -8,7 +8,6 @@
     <link rel="icon" href="../img/smallLogoWhite.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/home.css">
-    <script src="../js/controller/home.js"></script>
 </head>
 
 <body>
@@ -18,13 +17,15 @@
 
             <div class="box" id="loginButton"> <a href="login.html"> Login </a></div>
 
-            <div class="box" id="scheduling" > <a href="scheduling.html"> Scheduling </a></div>
+            <div class="box" id="schedulingButton"> <a href="scheduling.html"> Scheduling </a></div>
 
-            <div class="box" id="profile" > Profile </div>
+            <div class="box" id="profileButton"> <a href="../html/profile.html"> Profile </a> </div>
 
-            <div class="box" id="leaderboard"> LeaderBoard </div>
+            <div class="box" id="leaderboardButton"> LeaderBoard </div>
 
-            <div class="box" id="admin"> <a href="admin.html"> Admin </a></div>
+            <div class="box" id="adminButton" hidden> <a href="admin.html"> Admin </a></div>
+
+            <div class="box" id="logoutButton"> Logout </div>
     </ul>
 
     <div class="container" id="homeContainer">
@@ -37,13 +38,27 @@
 
     <div class="container" id="aboutUsContainer">
 
-        <h1> About Us </h1>
+        <div class="container" id="aboutUsContainer">
 
+            <h1> About Us </h1>
+            <h3> (Follow us on facebook! <a href="http://www.facebook.com"> Click HERE!)</a><br><br></h3>
+            <h4> 
+                We are a small team from Vila do Conde, Portugal <br><br>
+                During a normal conversation about the evolution of technology, we had a brilliant idea <br><br>
+                "Imagine being able to make an appointment without no "please hold the line"! Just clicking on some buttons and after some hours, bam, there's a specialized doctor in your house."   <br><br>
+                This way, with some sweat and tears, we created <b>Hypocrates AID!!!</b> <br><br>
+                Hypocrates Aid offers a wide range of specialized doctors ready to help you.<br><br>
+                All you need to do is, Signup, go the scheduling menu, choose the right doctor, when, and hit call. <br><br><br><br>
+            </h4>
+
+        <h1>Sponsors</h2>
         <img id="sponsor1" src="../img/sponsor1.png">
 
         <img id="sponsor2" src="../img/sponsor2.png">
 
     </div>
+
+    <script type="module" src="../js/view/home.js"></script>
 
 </body>
 </html>

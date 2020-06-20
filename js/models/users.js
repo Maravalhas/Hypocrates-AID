@@ -5,28 +5,37 @@ export default class Users {
         this.users = localStorage.users ? JSON.parse(localStorage.users) : []
     }
 
-    getAllUsers(){
-
-        return this.users
-    }
 
     loginUser(username)
     {   
 
-        let activeUser = username 
+        sessionStorage.setItem('activeUser',username)
     }
 
-    signupUser(username,password){
+    signupUser(username,age,adress,password){
 
-        this.users.push({username,password})
+        this.users.push({username,age,adress,password})
         this._persist()
-        alert("SignedUp Successfully!")
-        window.location.replace('../html/login.html');
     }
 
     removeUser(selectedUsername) {
         this.users = this.users.filter(user => user.username != selectedUsername)
         this._persist()
+    }
+
+    getAllUsers(){
+
+        return this.users
+    }
+
+    isLogedIn(){
+
+        return sessionStorage.getItem('activeUser') !== null ? true : false
+    }
+
+    logout(){
+
+        sessionStorage.removeItem('activeUser')
     }
 
     _persist(){

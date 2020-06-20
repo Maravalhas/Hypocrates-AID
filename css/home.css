@@ -16,6 +16,11 @@ h2{
     align-self: center;
     font-family: 'Times New Roman', Times, serif;
 }
+h3{
+
+    align-self: center;
+    font-family: 'Times New Roman', Times, serif;
+}
 
 #navbar{
     
@@ -59,7 +64,7 @@ h2{
 #homeContainer{
 
     width:100%;
-    margin-bottom: 20%;
+    margin-bottom: 25%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -93,4 +98,5 @@ h2{
 
     height: 400px;
     width: 400px;
+    align-self: flex-end;
 }

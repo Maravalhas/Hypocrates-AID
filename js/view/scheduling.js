@@ -12,6 +12,11 @@ export default class SchedulingView{
 
       this.schedulingController.getCurrentLocation()
     }
+
+    chooseDoctor(){
+
+      
+    }
 }
 const schedulingView = new SchedulingView()
 

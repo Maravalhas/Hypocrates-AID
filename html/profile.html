@@ -8,10 +8,53 @@
     <link rel="icon" href="../img/smallLogoWhite.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/profile.css">
-    <script src="../js/controller/profile.js"></script>
 </head>
 
 <body>
+
+    <ul class="nav" id="navbar">
+        <img src="../img/smallLogoWhite.png" id="logo">
+
+        <div class="box" id="aboutus"> <a href="../html/home.html"> About Us </a> </div>
+
+        <div class="box" id="scheduling"> <a href="../html/scheduling.html"> Scheduling </a> </div>
+
+        <div class="box" id="leaderboard"> LeaderBoard </div>
+
+        <div class="box" id="admin"> <a href="admin.html"> Admin </a></div>   
+    </ul>
+
+    <div>
     
+        <form id="editProfileForm">
+
+            <div class="form-group">
+                <label for="newUserName">Name</label>
+                <input type="text" class="form-control" id="newUserName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="newUserAge">Age</label>
+                <input type="number" class="form-control" id="newUserAge" min="18" max="100" required>
+            </div>
+
+            <div class="form-group">
+                <label for="newUserAdress">Adress</label>
+                <input type="text" class="form-control" id="newUserAdress" required>
+            </div>
+
+            <div class="form-group">
+                <label for="activeUserPassword">Password</label>
+                <input type="password" class="form-control" id="activeUserPassword" required> <br>
+                <input type="password" class="form-control" id="newUserPassword" required>
+            </div>
+
+            <input type="submit" class="btn btn-primary" id="submitChanges">
+
+        </form>
+
+    </div>
+    
+    <script type="module" src="../js/view/profile.js"></script>
 </body>
 </html>

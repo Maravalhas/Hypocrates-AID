@@ -14,7 +14,7 @@ export default class LoginController {
         if(this.users.getAllUsers().some(user => user.username == loginUsername && user.password == loginPassword)){
 
             this.users.loginUser(loginUsername)
-            alert('Loged in Successfully')
+            alert(`Logged in Successfully as ${loginUsername}`)
             window.location.replace('../html/home.html');
         }
         else
@@ -27,13 +27,13 @@ export default class LoginController {
     //Validate if there's no user with the choosed username.
     //If so, proceed to model for user registration in local storage
 
-    validateSignup(createUsername,createPassword) {
+    validateSignup(createUsername,createAge,createAdress,createPassword) {
 
         if(!this.users.getAllUsers().some(user => user.username == createUsername)){
 
-            this.users.signupUser(createUsername,createPassword)
-            alert('Loged in Successfully')
-            window.location.replace('../html/home.html');
+            this.users.signupUser(createUsername,createAge,createAdress,createPassword)
+            alert('SignedUp Successfully')
+            window.location.replace('../html/login.html');
         }
 
         else{
@@ -41,5 +41,4 @@ export default class LoginController {
             alert("Username already in use!")
         }
     }
-
 }

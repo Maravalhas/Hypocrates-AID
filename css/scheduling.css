@@ -10,7 +10,6 @@ body{
 
 #navbar{
 
-    position: fixed;
     display: flex;
     flex-direction: row;
     align-content: center;
@@ -47,19 +46,22 @@ body{
     color: white;
 }
 
-#schedulingContainer{
+#mainContainer {
 
-    width:100%;
-    height: 1000px;
-    margin: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 #map {
-    position: relative;
-    height: 800px;
-    width: 800px;
+    width: 100%;
+    height: 600px;
+    margin: 0px;
+}
+
+#schedulingContainer{
+
+    width:40%;
+    height: 600px;
+    margin: 0px;
 }

@@ -12,6 +12,7 @@ export default class LoginView {
         this.loginSubmit = document.querySelector("#loginSubmit")
         
         this.bindLoginForm()
+        this.preventLogin()
     }
 
     //Prevent form validation and get both username and password indicated

@@ -8,6 +8,8 @@ export default class SignupView {
         
         this.signupForm = document.querySelector('#signupForm')
         this.signupUsername = document.querySelector('#signupUsername')
+        this.signupAge = document.querySelector('#signupAge')
+        this.signupAdress = document.querySelector('#signupAdress')
         this.signupPassword = document.querySelector('#signupPassword')
         this.signupConfirmPassword = document.querySelector('#signupConfirmPassword')
         this.bindSignupForm()
@@ -22,7 +24,7 @@ export default class SignupView {
             event.preventDefault();
             if (signupPassword.value == signupConfirmPassword.value)
             {
-                this.loginController.validateSignup(this.signupUsername.value , this.signupConfirmPassword.value)
+                this.loginController.validateSignup(this.signupUsername.value , this.signupAge.value , this.signupAdress.value , this.signupPassword.value)
             }
             else
             {

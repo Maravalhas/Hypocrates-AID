@@ -57,11 +57,27 @@ body{
     align-items: flex-end;
 
     width: 450px;
-    height: 650px;
+    height: 700px;
     margin-top: 3%;
 }
 
 #signupUsername{
+
+    margin-bottom: 8%;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#signupAge{
+
+    margin-bottom: 8%;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#signupAdress{
 
     margin-bottom: 8%;
     align-content: center;

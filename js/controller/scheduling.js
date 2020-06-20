@@ -2,13 +2,16 @@ import Doctors from '../models/doctors.js'
 
 export default class SchedulingController{
 
+
     constructor(){
 
         this.doctorsModel = new Doctors()
         this.doctors = this.doctorsModel.getAllDoctors()
     }
 
+
     //Get the user current location / In case the geolocation is blocked, give standard Esmad location
+
 
     getCurrentLocation(){
 
@@ -27,29 +30,24 @@ export default class SchedulingController{
         }
     }
 
+
     //Get doctors location and pin them in the map
 
-    setMapMarkers(map){
 
-        for (let i = 0 ; i < this.doctors.length ; i++)
-        {
-            const marker = new google.maps.Marker({
-                position: {lat: this.doctors[i].lat, lng: this.doctors[i].lng} ,
-                map: map,
-                title: this.doctors[i].name,
-                icon: ('../img/medicMarkerIcon.png')
-            })
-            marker.setMap(map)
-        }
+    proceedScheduling(selectedDoctor){
+
+        
     }
 
+
     //Load GMap centered in the user location with defined styles
+
 
     initMap(latitude,longitude){
 
         const map = new google.maps.Map(document.querySelector('#map'), {
             center : {lat: latitude ,lng: longitude},
-            zoom: 16,
+            zoom: 15,
             disableDefaultUI: true,
             styles: [
                 {
@@ -284,6 +282,32 @@ export default class SchedulingController{
 
       marker.setMap(map)
 
-        this.setMapMarkers(map)
+        this.setDocMarkers(map)
     }
+
+
+    setDocMarkers(map){
+
+      for (let i = 0 ; i < this.doctors.length ; i++)
+      {
+          const marker = new google.maps.Marker({
+              position: {lat: this.doctors[i].lat, lng: this.doctors[i].lng} ,
+              map: map,
+              title: this.doctors[i].name,
+              icon: ('../img/medicMarkerIcon.png')
+          
+          })
+          marker.setMap(map)
+          let selectedDoctor = this.doctors[i]
+          let infoWindowContent = 
+         `<div id="content">
+          <h1 id="doctorName">${selectedDoctor.name} </h1> <br>
+          <h4> Age: ${selectedDoctor.age} </h4> <br>
+          <h4> Expertise: ${selectedDoctor.expertise} </h4> <br>
+          <button id="selectDoctor" type="button" class="btn btn-primary" onclick="chooseDoctor(selectedDoctor)">Select</button>`
+          const infoWindow = new google.maps.InfoWindow({content: infoWindowContent});
+
+        marker.addListener("click",() => infoWindow.open(map,marker))
+      }
+  }
 }
