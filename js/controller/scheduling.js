@@ -1,313 +1,126 @@
 import Doctors from '../models/doctors.js'
+import Users from '../models/users.js'
 
 export default class SchedulingController{
-
 
     constructor(){
 
         this.doctorsModel = new Doctors()
+        this.usersModel = new Users()
+
         this.doctors = this.doctorsModel.getAllDoctors()
+        this.activeUser = sessionStorage.activeUser
+        this.getActiveUserObject = (this.usersModel.getAllUsers().find(user => user.username == this.activeUser))
+
+        this.myMap
+        this.activeDoctor
+        this.durationArrival
+
+        this.pSelectedDoctor = document.querySelector('#pSelectedDoctor')
+        this.schedulingContainer = document.querySelector('#schedulingContainer')
+        this.confirmAppointmentForm = document.querySelector('#confirmAppointmentForm')
+
+        this.schedulingContainer.style.visibility="hidden"
+        this.userLat
+        this.userLng
+
+        this.directionsService = new google.maps.DirectionsService();
+        this.directionsRenderer = new google.maps.DirectionsRenderer();
+
+        this.confirmAppoitment()
     }
 
+    setUserLocation(lat,lng){
+        this.userLat = lat
+        this.userLng = lng
 
-    //Get the user current location / In case the geolocation is blocked, give standard Esmad location
-
-
-    getCurrentLocation(){
-
-        if(navigator.geolocation) {
-
-            navigator.geolocation.getCurrentPosition(position =>{
-
-                const lat = position.coords.latitude
-                const lng = position.coords.longitude
-                this.initMap(lat,lng)
-            })
-        }
-        else
-        {
-            this.initMap(41.366068,-8.739358)
-        }
-    }
-
-
-    //Get doctors location and pin them in the map
-
-
-    proceedScheduling(selectedDoctor){
-
-        
-    }
-
-
-    //Load GMap centered in the user location with defined styles
-
-
-    initMap(latitude,longitude){
-
-        const map = new google.maps.Map(document.querySelector('#map'), {
-            center : {lat: latitude ,lng: longitude},
-            zoom: 15,
-            disableDefaultUI: true,
-            styles: [
-                {
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#242f3e"
-                    }
-                  ]
-                },
-                {
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#746855"
-                    }
-                  ]
-                },
-                {
-                  "elementType": "labels.text.stroke",
-                  "stylers": [
-                    {
-                      "color": "#242f3e"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "administrative",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "visibility": "off"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "administrative.land_parcel",
-                  "elementType": "labels",
-                  "stylers": [
-                    {
-                      "visibility": "off"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "administrative.locality",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#d59563"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "poi",
-                  "stylers": [
-                    {
-                      "visibility": "off"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "poi",
-                  "elementType": "labels.text",
-                  "stylers": [
-                    {
-                      "visibility": "off"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "poi",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#d59563"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "poi.park",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#263c3f"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "poi.park",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#6b9a76"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "road",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#38414e"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "road",
-                  "elementType": "geometry.stroke",
-                  "stylers": [
-                    {
-                      "color": "#212a37"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "road",
-                  "elementType": "labels.icon",
-                  "stylers": [
-                    {
-                      "visibility": "off"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "road",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#9ca5b3"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "road.highway",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#746855"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "road.highway",
-                  "elementType": "geometry.stroke",
-                  "stylers": [
-                    {
-                      "color": "#1f2835"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "road.highway",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#f3d19c"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "road.local",
-                  "elementType": "labels",
-                  "stylers": [
-                    {
-                      "visibility": "off"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "transit",
-                  "stylers": [
-                    {
-                      "visibility": "off"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "transit",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#2f3948"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "transit.station",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#d59563"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "water",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#17263c"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "water",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#515c6d"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "water",
-                  "elementType": "labels.text.stroke",
-                  "stylers": [
-                    {
-                      "color": "#17263c"
-                    }
-                  ]
-                }
-              ]
-        })
-
-        const marker = new google.maps.Marker({
-          position: {lat: latitude, lng: longitude} ,
-          map: map,
-          title: "You!",
-          icon: ('../img/personIcon.png')
-        })
-
-      marker.setMap(map)
-
-        this.setDocMarkers(map)
     }
 
 
     setDocMarkers(map){
 
-      for (let i = 0 ; i < this.doctors.length ; i++)
-      {
-          const marker = new google.maps.Marker({
-              position: {lat: this.doctors[i].lat, lng: this.doctors[i].lng} ,
-              map: map,
-              title: this.doctors[i].name,
-              icon: ('../img/medicMarkerIcon.png')
-          
-          })
-          marker.setMap(map)
-          let selectedDoctor = this.doctors[i]
-          let infoWindowContent = 
-         `<div id="content">
-          <h1 id="doctorName">${selectedDoctor.name} </h1> <br>
-          <h4> Age: ${selectedDoctor.age} </h4> <br>
-          <h4> Expertise: ${selectedDoctor.expertise} </h4> <br>
-          <button id="selectDoctor" type="button" class="btn btn-primary" onclick="chooseDoctor(selectedDoctor)">Select</button>`
-          const infoWindow = new google.maps.InfoWindow({content: infoWindowContent});
+        this.myMap = map
 
-        marker.addListener("click",() => infoWindow.open(map,marker))
-      }
-  }
+        for (let i = 0 ; i < this.doctors.length ; i++)
+        {
+            
+            const marker = new google.maps.Marker({
+
+                position: {lat: this.doctors[i].lat, lng: this.doctors[i].lng} ,
+                map: map,
+                title: this.doctors[i].name,
+                icon: ('../img/medicMarkerIcon.png')
+            })
+
+            marker.setMap(map)
+
+            marker.addListener("click",() => this.getRoute(this.doctors[i]))
+        }
+
+    }
+
+    getRoute(doctor){
+
+        const request = {
+            origin: {lat: doctor.lat, lng: doctor.lng},
+            destination: {lat: this.userLat , lng: this.userLng},
+            travelMode: google.maps.TravelMode['DRIVING']
+        }
+
+        this.directionsRenderer.setMap(this.myMap);
+        
+
+        this.directionsService.route(request,
+            (result, status) => {
+                if (status == 'OK') {
+    
+                    this.directionsRenderer.setDirections(result);
+                    const directionsData = result.routes[0].legs[0]; // Get data about the mapped route
+                    if (directionsData) {
+                        this.selectDoctor(doctor,directionsData.distance.text,directionsData.duration.text)
+                    }
+                }
+    
+            })
+    }
+
+    selectDoctor(doctor,distance,duration){
+        const table = `
+            <table class="table" id="doctorTable">
+            <thead>
+            <tr><th>Name</th><th>Age</th><th>Expertise</th><th>Rating</th><th>Distance</th><th>ETA</th></tr>
+            <thead>
+            <tr>
+                <td>${doctor.name}</td>
+                <td>${doctor.age}</td>
+                <td>${doctor.expertise}</td>
+                <td>${doctor.rating}</td>
+                <td>${distance}</td>
+                <td>${duration}</td>
+            </tr>
+            </table>
+        `
+        this.activeDoctor = doctor
+        this.durationArrival = duration
+        this.schedulingContainer.style.visibility="visible"
+        this.pSelectedDoctor.innerHTML = table
+    }
+
+    confirmAppoitment(){
+
+
+        this.confirmAppointmentForm.addEventListener('submit', event=>{
+
+            event.preventDefault()
+
+            this.getActiveUserObject.status = "active"
+            this.getActiveUserObject.ongoingDoctor = this.activeDoctor.name
+            this.usersModel._persist()
+            window.location.replace('../html/ongoing.html');
+            
+        })
+    }
 }
+
+new SchedulingController
+

@@ -24,7 +24,7 @@ export default class SignupView {
             event.preventDefault();
             if (signupPassword.value == signupConfirmPassword.value)
             {
-                this.loginController.validateSignup(this.signupUsername.value , this.signupAge.value , this.signupAdress.value , this.signupPassword.value)
+                this.loginController.validateSignup(this.signupUsername.value , this.signupAge.value , this.signupAdress.value , this.signupPassword.value,)
             }
             else
             {

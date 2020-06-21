@@ -45,3 +45,10 @@ body{
     text-decoration: none;
     color: white;
 }
+
+#profileContainer{
+
+    margin: 5%;
+    width: 90%;
+    height: 1000px;
+}

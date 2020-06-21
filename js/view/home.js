@@ -1,12 +1,10 @@
 import Users from '../models/users.js'
 
-const myUsers = new Users()
-
 export default class HomeView{
 
     constructor(){
 
-        this.myUsers = new Users()
+        this.usersModel = new Users()
     
         this.loginButton = document.querySelector('#loginButton')
         this.logoutButton = document.querySelector('#logoutButton')
@@ -14,14 +12,17 @@ export default class HomeView{
         this.profileButton = document.querySelector('#profileButton')
         this.adminButton = document.querySelector('#adminButton')
         this.leaderboardButton = document.querySelector('#leaderboardButton')
+
+        this.activeUser = sessionStorage.activeUser
+        this.getActiveUserObject = (this.usersModel.getAllUsers().find(user => user.username == this.activeUser))
     
         this.checkLogin()
-        this.checkAdmin()
+        this.checkStatus()
     }
     
         checkLogin(){
     
-            if(this.myUsers.isLogedIn()){
+            if(this.usersModel.isLogedIn()){
     
                 this.loginButton.style.visibility="hidden"
                 this.logoutButton.style.visibility="visible"
@@ -39,18 +40,15 @@ export default class HomeView{
                 this.leaderboardButton.style.visibility="hidden"
             }
         }
-    
-        checkAdmin(){
-    
-            if(sessionStorage.activeUser.type != "admin")
-            {
-                this.adminButton.style.visibility="hidden"
-            }
-            else
-            {
-                this.adminButton.style.visibility="visible"
+
+        checkStatus(){
+
+            if (this.getActiveUserObject.status == "active"){
+
+                window.location.replace('../html/ongoing.html');
             }
         }
+    
 }
 new HomeView()
 
@@ -58,5 +56,4 @@ const homeView = new HomeView()
 
 homeView.logoutButton.addEventListener("click",event=>{
     homeView.myUsers.logout();
-    window.location.replace('../html/home.html');
 })

@@ -13,26 +13,27 @@
 <body>
     
     <ul class="nav" id="navbar">
-        <img src="../img/smallLogoWhite.png" id="logo">
-
-        <div class="box" id="aboutus"> <a href="../html/home.html"> About Us </a> </div>
+        <img src="../img/smallLogoWhite.png" id="logo" onclick="location.href='home.html'">
 
         <div class="box" id="profile" > <a href="../html/profile.html"> Profile </a> </div>
 
         <div class="box" id="leaderboard"> LeaderBoard </div>
-
-        <div class="box" id="admin"> <a href="admin.html"> Admin </a></div>
         
     </ul>
 
-</div id="mainContainer">
         <div id="map"></div>
 
         <div class="container" id="schedulingContainer">
+            <p id="pSelectedDoctor"></p> <br>
+
+            <form id="confirmAppointmentForm">
+                <input type="submit" class="btn btn-danger">
+            </form>
         </div>
-</div>
-    <script type="module" src="../js/view/scheduling.js"></script>
+
+    
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9v6CJD68R4XtEs5Ue8Q3kWa9nMdxohVA"></script>
+    <script type="module" src="../js/view/scheduling.js"></script>
     
 </body>
 </html>
