@@ -8,18 +8,21 @@
     <link rel="icon" href="../img/smallLogoWhite.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/scheduling.css">
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9v6CJD68R4XtEs5Ue8Q3kWa9nMdxohVA"></script>
 </head>
 
 <body>
     
-    <ul class="nav" id="navbar">
-        <img src="../img/smallLogoWhite.png" id="logo" onclick="location.href='home.html'">
+    <div id="navbarContainer">
+        <ul class="nav" id="navbar">
+            <img src="../img/smallLogoWhite.png" id="logo" onclick="location.href='home.html'">
 
-        <div class="box" id="profile" > <a href="../html/profile.html"> Profile </a> </div>
+            <div class="box" id="profile" > <a href="../html/profile.html"> Profile </a> </div>
 
-        <div class="box" id="leaderboard"> LeaderBoard </div>
-        
-    </ul>
+            <div class="box" id="leaderboard"> LeaderBoard </div>
+            
+        </ul>
+    </div>
 
         <div id="map"></div>
 
@@ -27,13 +30,14 @@
             <p id="pSelectedDoctor"></p> <br>
 
             <form id="confirmAppointmentForm">
-                <input type="submit" class="btn btn-danger">
+                <div id="buttonPlaceHolder">
+                    <input type="submit" class="btn btn-danger" id="submitButton">
+                </div>
             </form>
         </div>
 
     
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9v6CJD68R4XtEs5Ue8Q3kWa9nMdxohVA"></script>
-    <script type="module" src="../js/view/scheduling.js"></script>
+    <script async type="module" src="../js/view/scheduling.js"></script>
     
 </body>
 </html>

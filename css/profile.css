@@ -48,7 +48,49 @@ body{
 
 #profileContainer{
 
+    display:flex;
+    flex-direction: column;
+    align-content: center;
     margin: 5%;
+    margin-top:1%;
     width: 90%;
     height: 1000px;
+}
+
+h1{
+
+    align-self: center;
+    justify-self: center;
+    margin-bottom: 3%;
+}
+
+#appointmentsTable{
+    
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom:3%;
+    border-bottom: 1px solid grey;
+    width: 80%;
+}
+
+h2{
+
+    align-self: center;
+    justify-self: center;
+    margin-bottom: 3%;
+}
+
+#editProfileForm{
+
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 5%;
+    margin-top:0;
+}
+
+#submitChanges{
+
+    width: 15%;
+    align-self: center;
 }

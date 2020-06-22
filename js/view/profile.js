@@ -13,10 +13,11 @@ export default class ProfileView{
         this.newUserPassword = document.querySelector('#newUserPassword')
         this.editProfileForm = document.querySelector('#editProfileForm')
 
-        this.bindNewUserName()
+        this.bindNewUserSettings()
     }
 
-    bindNewUserName(){
+    
+    bindNewUserSettings(){
 
         this.editProfileForm.addEventListener("submit",event=>{
 

@@ -5,6 +5,12 @@ body{
     background-repeat: no-repeat;
 }
 
+#navbarContainer{
+
+    height: 80px;
+    margin: 0;
+}
+
 #navbar{
     
     position: fixed;
@@ -44,14 +50,33 @@ body{
     color: white;
 }
 
-#addDoctorContainer{
+#doctorsTable{
+    
+    margin-left: 10%;
+    margin-right: 10%;
+    border-bottom: 1px solid grey;
+    width: 80%;
+}
+
+h2{
+
+    align-self: center;
+    margin-bottom: 3%;
+}
+
+#createDoctorForm{
 
     display: flex;
-    flex-direction: row;
-    justify-content:center;
-    align-items: center;
-    position: relative;
+    flex-direction: column;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 60%;
+}
 
-    width: 450px;
-    height: 650px;
+#submitChanges{
+
+    align-self: center;
+    width: 15%;
 }

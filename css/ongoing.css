@@ -46,3 +46,19 @@ h1{
     height: 300px;
     align-self: center;
 }
+
+#appoitmentForm{
+
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 5%;
+    margin-top:0;
+}
+
+#submit{
+
+    margin-top: 2%;
+    width: 15%;
+    align-self: center;
+}

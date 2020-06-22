@@ -41,21 +41,20 @@ export default class SchedulingController{
 
         this.myMap = map
 
-        for (let i = 0 ; i < this.doctors.length ; i++)
-        {
+        this.doctors.forEach(doctor =>{
             
             const marker = new google.maps.Marker({
 
-                position: {lat: this.doctors[i].lat, lng: this.doctors[i].lng} ,
+                position: {lat: doctor.lat, lng: doctor.lng} ,
                 map: map,
-                title: this.doctors[i].name,
+                title: doctor.name,
                 icon: ('../img/medicMarkerIcon.png')
             })
 
             marker.setMap(map)
 
-            marker.addListener("click",() => this.getRoute(this.doctors[i]))
-        }
+            marker.addListener("click",() => this.getRoute(doctor))
+        })
 
     }
 

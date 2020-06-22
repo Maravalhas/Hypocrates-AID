@@ -11,17 +11,33 @@
 </head>
 
 <body>
-    <ul class="nav" id="navbar">
-        <img src="../img/smallLogoWhite.png" id="logo" onclick="location.href='home.html'">
+    <div id="navbarContainer">
+        <ul class="nav" id="navbar">
+            <img src="../img/smallLogoWhite.png" id="logo" onclick="location.href='home.html'">
 
-        <div class="box" id="loginButton" hidden> <a href="login.html"> Login </a></div>
+            <div class="box" id="loginButton" hidden> <a href="login.html"> Login </a></div>
 
-        <div class="box" id="scheduling" > <a href="scheduling.html"> Scheduling </a></div>
+            <div class="box" id="scheduling" > <a href="scheduling.html"> Scheduling </a></div>
 
-        <div class="box" id="profile" > <a href="../html/profile.html"> Profile </a> </div>
+            <div class="box" id="profile" > <a href="../html/profile.html"> Profile </a> </div>
 
-        <div class="box" id="leaderboard"> LeaderBoard </div>
-    </ul>
+            <div class="box" id="leaderboard"> LeaderBoard </div>
+        </ul>
+    </div>
+    
+    <div>
+        <ul class="nav nav-tabs" id="navTabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="adminDoctors.html">Doctors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="adminUsers.html">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Appointments</a>
+            </li>
+        </ul>
+    </div>
 
     <div class="container" id="addDoctorContainer">
 

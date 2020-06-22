@@ -18,19 +18,29 @@ export default class HomeView{
     
         this.checkLogin()
         this.checkStatus()
+        this.logout()
     }
     
         checkLogin(){
     
-            if(this.usersModel.isLogedIn()){
+            if(this.usersModel.isLogedIn() && this.getActiveUserObject.type == "admin"){
     
+                this.loginButton.style.visibility="hidden"
+                this.logoutButton.style.visibility="visible"
+                this.schedulingButton.style.visibility="hidden"
+                this.profileButton.style.visibility="hidden"
+                this.leaderboardButton.style.visibility="visible"
+                this.adminButton.style.visibility = "visible"
+            }
+            else if (this.usersModel.isLogedIn() && this.getActiveUserObject.type != "admin"){
+
                 this.loginButton.style.visibility="hidden"
                 this.logoutButton.style.visibility="visible"
                 this.schedulingButton.style.visibility="visible"
                 this.profileButton.style.visibility="visible"
                 this.leaderboardButton.style.visibility="visible"
-            }
-    
+                this.adminButton.style.visibility = "hidden"
+            } 
             else{
     
                 this.loginButton.style.visibility="visible"
@@ -38,22 +48,24 @@ export default class HomeView{
                 this.schedulingButton.style.visibility="hidden"
                 this.profileButton.style.visibility="hidden"
                 this.leaderboardButton.style.visibility="hidden"
+                this.adminButton.style.visibility = "hidden"
             }
         }
 
         checkStatus(){
 
-            if (this.getActiveUserObject.status == "active"){
+            if (this.usersModel.isLogedIn() && this.getActiveUserObject.status == "active"){
 
                 window.location.replace('../html/ongoing.html');
             }
         }
+
+        logout(){
+
+            this.logoutButton.addEventListener("click",event=>{
+                this.usersModel.logout();
+            })
+        }
     
 }
 new HomeView()
-
-const homeView = new HomeView()
-
-homeView.logoutButton.addEventListener("click",event=>{
-    homeView.myUsers.logout();
-})
