@@ -15,10 +15,13 @@ export default class SchedulingController{
         this.myMap
         this.activeDoctor
         this.durationArrival
+        this.docFilter = ""
+        this.doctorMarkers = []
 
         this.pSelectedDoctor = document.querySelector('#pSelectedDoctor')
         this.schedulingContainer = document.querySelector('#schedulingContainer')
         this.confirmAppointmentForm = document.querySelector('#confirmAppointmentForm')
+        this.pDoctorFilters = document.querySelector('#pDoctorFilters')
 
         this.schedulingContainer.style.visibility="hidden"
         this.userLat
@@ -28,6 +31,7 @@ export default class SchedulingController{
         this.directionsRenderer = new google.maps.DirectionsRenderer();
 
         this.confirmAppoitment()
+        this.filterDoctors()
     }
 
     setUserLocation(lat,lng){
@@ -41,21 +45,50 @@ export default class SchedulingController{
 
         this.myMap = map
 
-        this.doctors.forEach(doctor =>{
+            this.doctors.forEach(doctor =>{
             
-            const marker = new google.maps.Marker({
+                const marker = new google.maps.Marker({
+    
+                    position: {lat: doctor.lat, lng: doctor.lng} ,
+                    map: map,
+                    title: doctor.name,
+                    icon: ('../img/medicMarkerIcon.png')
+                })
 
+                this.doctorMarkers.push(marker)
+
+                this.displayDocMarkers(doctor)
+            })
+
+    }
+
+    setFilteredDocMarkers(){
+
+        const filteredDoctors = this.doctors.filter(doctor => doctor.expertise == this.docFilter)
+
+        filteredDoctors.forEach(doctor=>{
+
+            const marker = new google.maps.Marker({
+        
                 position: {lat: doctor.lat, lng: doctor.lng} ,
-                map: map,
+                map: this.myMap,
                 title: doctor.name,
                 icon: ('../img/medicMarkerIcon.png')
             })
 
-            marker.setMap(map)
+            this.doctorMarkers.push(marker)
 
+            this.displayDocMarkers(doctor)
+        })
+    }
+
+    displayDocMarkers(doctor){
+
+        this.doctorMarkers.forEach(marker =>{
+
+            marker.setMap(this.myMap)
             marker.addListener("click",() => this.getRoute(doctor))
         })
-
     }
 
     getRoute(doctor){
@@ -81,6 +114,59 @@ export default class SchedulingController{
                 }
     
             })
+    }
+
+    listenerRadioSelect(){
+
+        for (const radiobutton of document.getElementsByName('doctorFilterRadio')) {
+
+            radiobutton.addEventListener('click', event => {
+                this.doctorMarkers.forEach(marker =>{
+
+                    marker.setMap(null)
+                })
+                this.doctorMarkers = []
+                this.docFilter = event.target.id
+                this.directionsRenderer.setMap(null);
+                this.schedulingContainer.style.visibility = "hidden"
+                this.setFilteredDocMarkers()
+            })
+        }
+    }
+
+
+    filterDoctors(){
+
+        let radioFilters = `<form>`
+        let expertises = []
+
+        this.doctors.forEach(doctor=>{
+
+            if (!expertises.some(existingExpertise => existingExpertise == doctor.expertise)){
+                expertises.push(doctor.expertise)
+            }
+        })
+
+        expertises.forEach(expertise =>{
+
+            radioFilters += `<input type="radio" name="doctorFilterRadio" id="${expertise}" value="${expertise}">
+                             <label for="${expertise}"> ${expertise} </label>
+                            `
+
+        })
+
+        radioFilters += `</form>`
+
+        this.pDoctorFilters.innerHTML = radioFilters
+
+        this.listenerRadioSelect()
+
+    }
+
+    
+    setFilterValue(expertise){
+
+        this.docFilter = expertise
     }
 
     selectDoctor(doctor,distance,duration){

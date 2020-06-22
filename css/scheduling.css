@@ -73,3 +73,10 @@ body{
     justify-content: center;
     align-content: center;
 }
+
+#radioFilterDiv{
+
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+}
