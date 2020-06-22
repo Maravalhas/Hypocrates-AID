@@ -52,8 +52,9 @@ export default class AdminAppointments{
 
             removeButton.addEventListener('click', event => {
                 this.appointmentsModel.removeAppointment(event.target.id)
-                this.bindUsersTable()
+                window.location.replace('../html/adminAppointments.html');
             })
+            
         }
     }
 }

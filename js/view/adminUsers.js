@@ -51,7 +51,7 @@ export default class AdminUsers{
 
             removeButton.addEventListener('click', event => {
                 this.usersModel.removeUser(event.target.id)
-                this.bindUsersTable()
+                window.location.replace('../html/adminUsers.html');
             })
         }
     }
