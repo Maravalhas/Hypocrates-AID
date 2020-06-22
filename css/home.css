@@ -5,6 +5,11 @@ body{
     background-repeat: no-repeat;
 }
 
+p{
+
+    margin:0;
+}
+
 h1{
 
     align-self: center;
@@ -88,15 +93,21 @@ h3{
     align-content: center;
 }
 
+#sponsorContainer{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 #sponsor1{
 
-    height: 400px;
-    width: 400px;
+    height: 300px;
+    width: 300px;
 }
 
 #sponsor2{
 
-    height: 400px;
-    width: 400px;
-    align-self: flex-end;
+    height: 300px;
+    width: 300px;
 }

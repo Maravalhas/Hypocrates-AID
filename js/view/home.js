@@ -5,6 +5,12 @@ export default class HomeView{
     constructor(){
 
         this.usersModel = new Users()
+
+        this.activeUser = sessionStorage.activeUser
+        this.getActiveUserObject = (this.usersModel.getAllUsers().find(user => user.username == this.activeUser))
+        this.pNavbar = document.querySelector('#pNavbar')
+
+        this.checkLogin()
     
         this.loginButton = document.querySelector('#loginButton')
         this.logoutButton = document.querySelector('#logoutButton')
@@ -13,42 +19,64 @@ export default class HomeView{
         this.adminButton = document.querySelector('#adminButton')
         this.leaderboardButton = document.querySelector('#leaderboardButton')
 
-        this.activeUser = sessionStorage.activeUser
-        this.getActiveUserObject = (this.usersModel.getAllUsers().find(user => user.username == this.activeUser))
-    
-        this.checkLogin()
         this.checkStatus()
         this.logout()
     }
     
         checkLogin(){
+
+            let result
     
             if(this.usersModel.isLogedIn() && this.getActiveUserObject.type == "admin"){
-    
-                this.loginButton.style.visibility="hidden"
-                this.logoutButton.style.visibility="visible"
-                this.schedulingButton.style.visibility="hidden"
-                this.profileButton.style.visibility="hidden"
-                this.leaderboardButton.style.visibility="visible"
-                this.adminButton.style.visibility = "visible"
+                result = `
+                            <ul class="nav" id="navbar">
+
+                            <img src="../img/smallLogoWhite.png" id="logo" onclick="location.href='home.html'">
+
+                            <div class="box" id="logoutButton"> <a href="../html/home.html"> Logout </a> </div>
+
+                            <div class="box" id="leaderboardButton"><a href="leaderboard.html">  LeaderBoard </a> </div>
+
+                            <div class="box" id="adminButton"> <a href="../html/adminDoctors.html"> Admin </a> </div>
+                            
+                            </ul>
+                        `
+
+                this.pNavbar.innerHTML = result
             }
             else if (this.usersModel.isLogedIn() && this.getActiveUserObject.type != "admin"){
 
-                this.loginButton.style.visibility="hidden"
-                this.logoutButton.style.visibility="visible"
-                this.schedulingButton.style.visibility="visible"
-                this.profileButton.style.visibility="visible"
-                this.leaderboardButton.style.visibility="visible"
-                this.adminButton.style.visibility = "hidden"
+                result = `
+                            <ul class="nav" id="navbar">
+
+                            <img src="../img/smallLogoWhite.png" id="logo" onclick="location.href='home.html'">
+
+                            <div class="box" id="logoutButton"> <a href="../html/home.html"> Logout </a> </div>
+
+                            <div class="box" id="profileButton"> <a href="../html/profile.html"> Profile </a> </div>
+
+                            <div class="box" id="schedulingButton"> <a href="scheduling.html"> Scheduling </a></div>
+
+                            <div class="box" id="leaderboardButton"><a href="leaderboard.html">  LeaderBoard </a> </div>
+                            
+                            </ul>
+                        `
+
+                this.pNavbar.innerHTML = result
             } 
             else{
     
-                this.loginButton.style.visibility="visible"
-                this.logoutButton.style.visibility="hidden"
-                this.schedulingButton.style.visibility="hidden"
-                this.profileButton.style.visibility="hidden"
-                this.leaderboardButton.style.visibility="hidden"
-                this.adminButton.style.visibility = "hidden"
+                result = `
+                            <ul class="nav" id="navbar">
+
+                            <img src="../img/smallLogoWhite.png" id="logo" onclick="location.href='home.html'">
+                            
+                            <div class="box" id="loginButton"> <a href="login.html"> Login </a></div>
+                            
+                            </ul>
+                        `
+
+                this.pNavbar.innerHTML = result
             }
         }
 

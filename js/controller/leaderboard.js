@@ -6,8 +6,42 @@ export default class Leaderboard{
 
         this.doctorsModel = new Doctors()
         this.pLeaderboardTable = document.querySelector('#pLeaderboardTable')
+        this.pNavbar = document.querySelector('#pNavbar')
 
+        
+        this.checkUser()
         this.sortLeaderboard()
+    }
+
+    checkUser(){
+
+        let result 
+
+        if(sessionStorage.activeUser == "Admin"){
+            result = `
+                        <ul class="nav" id="navbar">
+
+                        <img src="../img/smallLogoWhite.png" id="logo" onclick="location.href='home.html'">
+                        
+                        </ul>
+                    `
+
+            this.pNavbar.innerHTML = result
+        }
+        else
+        {
+            result = `
+                        <ul class="nav" id="navbar">
+
+                        <img src="../img/smallLogoWhite.png" id="logo" onclick="location.href='home.html'">
+
+                        <div class="box" id="schedulingButton"> <a href="scheduling.html"> Scheduling </a></div>
+                        
+                        </ul>
+                    `
+
+            this.pNavbar.innerHTML = result
+        }
     }
 
     sortLeaderboard(){
@@ -17,8 +51,6 @@ export default class Leaderboard{
         sortHighestRating.sort(function(a,b) {
             return b.rating - a.rating;
         });
-        
-        console.log(sortHighestRating)
         
         this.setLeaderboardTable(sortHighestRating)
     }
