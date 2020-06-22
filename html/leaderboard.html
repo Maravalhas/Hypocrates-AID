@@ -8,10 +8,25 @@
     <link rel="icon" href="../img/smallLogoWhite.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/leaderboard.css">
-    <script src="../js/controller/leaderboard.js"></script>
 </head>
 
 <body>
     
+    <ul class="nav" id="navbar">
+        <img src="../img/smallLogoWhite.png" id="logo" onclick="location.href='home.html'">
+
+        <div class="box" id="profile" > <a href="../html/profile.html"> Profile </a> </div>
+
+        <div class="box" id="scheduling"> <a href="../html/scheduling.html"> Scheduling </a> </div>
+        
+    </ul>
+
+    <div class="container" id="mainContainer">
+        <h2>Leaderboard</h2>
+
+        <p id="pLeaderboardTable"></p>
+    </div>
+
+    <script type="module" src="../js/controller/leaderboard.js"></script>
 </body>
 </html>
