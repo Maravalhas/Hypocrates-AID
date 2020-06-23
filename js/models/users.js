@@ -11,7 +11,7 @@ export default class Users {
 
         if(!this.users.some(user => user.username == "admin" || user.name == "Admin"))
         {
-            users.users.push({username : admin , password : admin , type : admin})
+            this.users.push({username : "admin" , password : "admin" , type : "admin"})
             this._persist()
         }
     }
