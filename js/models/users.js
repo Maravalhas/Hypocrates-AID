@@ -46,4 +46,7 @@ export default class Users {
 
 const users = new Users()
 
-
+if(!users.getAllUsers.some(user => user.username == admin))
+{
+    users.users.push({username : admin , password : admin , type : admin})
+}
