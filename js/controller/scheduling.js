@@ -55,10 +55,10 @@ export default class SchedulingController{
                     icon: ('../img/medicMarkerIcon.png')
                 })
 
-                this.doctorMarkers.push(marker)
-
-                this.displayDocMarkers(doctor)
+                this.doctorMarkers.push({marker,doctor})
             })
+
+        this.displayDocMarkers()
 
     }
 
@@ -66,28 +66,28 @@ export default class SchedulingController{
 
         const filteredDoctors = this.doctors.filter(doctor => doctor.expertise == this.docFilter)
 
-        filteredDoctors.forEach(doctor=>{
+            filteredDoctors.forEach(doctor=>{
 
-            const marker = new google.maps.Marker({
-        
-                position: {lat: doctor.lat, lng: doctor.lng} ,
-                map: this.myMap,
-                title: doctor.name,
-                icon: ('../img/medicMarkerIcon.png')
+                const marker = new google.maps.Marker({
+            
+                    position: {lat: doctor.lat, lng: doctor.lng} ,
+                    map: this.myMap,
+                    title: doctor.name,
+                    icon: ('../img/medicMarkerIcon.png')
+                })
+
+                this.doctorMarkers.push({marker,doctor})
             })
 
-            this.doctorMarkers.push(marker)
-
-            this.displayDocMarkers(doctor)
-        })
+        this.displayDocMarkers()
     }
 
-    displayDocMarkers(doctor){
+    displayDocMarkers(){
 
-        this.doctorMarkers.forEach(marker =>{
+        this.doctorMarkers.forEach(object =>{
 
-            marker.setMap(this.myMap)
-            marker.addListener("click",() => this.getRoute(doctor))
+            object.marker.setMap(this.myMap)
+            object.marker.addListener("click",() => this.getRoute(object.doctor))
         })
     }
 
@@ -101,7 +101,6 @@ export default class SchedulingController{
 
         this.directionsRenderer.setMap(this.myMap);
         
-
         this.directionsService.route(request,
             (result, status) => {
                 if (status == 'OK') {
@@ -121,9 +120,9 @@ export default class SchedulingController{
         for (const radiobutton of document.getElementsByName('doctorFilterRadio')) {
 
             radiobutton.addEventListener('click', event => {
-                this.doctorMarkers.forEach(marker =>{
+                this.doctorMarkers.forEach(object =>{
 
-                    marker.setMap(null)
+                    object.marker.setMap(null)
                 })
                 this.doctorMarkers = []
                 this.docFilter = event.target.id
@@ -192,7 +191,6 @@ export default class SchedulingController{
     }
 
     confirmAppoitment(){
-
 
         this.confirmAppointmentForm.addEventListener('submit', event=>{
 
