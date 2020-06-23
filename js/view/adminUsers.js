@@ -14,7 +14,7 @@ export default class AdminUsers{
 
         let result = ''
 
-        const allUsers = this.usersModel.users.filter(user => user.username != "Admin")
+        const allUsers = this.usersModel.users.filter(user => user.username != "Admin" || user.username != "admin")
 
         if (allUsers.length != 0){
 
