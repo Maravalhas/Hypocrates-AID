@@ -3,6 +3,8 @@ export default class Users {
     constructor() {
 
         this.users = localStorage.users ? JSON.parse(localStorage.users) : []
+
+        this.createAdmin()
     }
 
     createAdmin(){
@@ -10,6 +12,7 @@ export default class Users {
         if(!this.users.some(user => user.username == admin))
         {
             users.users.push({username : admin , password : admin , type : admin})
+            this._persist()
         }
     }
 
