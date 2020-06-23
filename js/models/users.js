@@ -9,7 +9,7 @@ export default class Users {
 
     createAdmin(){
 
-        if(!this.users.some(user => user.username == admin))
+        if(!this.users.some(user => user.username == "admin" || user.name == "Admin"))
         {
             users.users.push({username : admin , password : admin , type : admin})
             this._persist()
