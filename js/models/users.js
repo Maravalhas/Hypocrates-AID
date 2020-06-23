@@ -5,6 +5,13 @@ export default class Users {
         this.users = localStorage.users ? JSON.parse(localStorage.users) : []
     }
 
+    createAdmin(){
+
+        if(!this.users.some(user => user.username == admin))
+        {
+            users.users.push({username : admin , password : admin , type : admin})
+        }
+    }
 
     loginUser(username)
     {   
@@ -46,7 +53,3 @@ export default class Users {
 
 const users = new Users()
 
-if(!users.getAllUsers.some(user => user.username == admin))
-{
-    users.users.push({username : admin , password : admin , type : admin})
-}
