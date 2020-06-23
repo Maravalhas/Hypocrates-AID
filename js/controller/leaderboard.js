@@ -17,7 +17,7 @@ export default class Leaderboard{
 
         let result 
 
-        if(sessionStorage.activeUser == "Admin"){
+        if(sessionStorage.activeUser == "Admin" || sessionStorage.activeUser == "admin"){
             result = `
                         <ul class="nav" id="navbar">
 
